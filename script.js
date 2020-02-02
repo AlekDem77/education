@@ -1,7 +1,7 @@
 
 
 var money = prompt("Ваш бюджет на месяц?");
-var time = prompt("Введите дату в формате YYYY-MM-DD";
+var time = prompt("Введите дату в формате YYYY-MM-DD");
 var appData =  {};
 appData.budjet = money;
 appData.timeData = time;
