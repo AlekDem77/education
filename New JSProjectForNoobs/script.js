@@ -1,9 +1,19 @@
 "use strict";
 
-const answers = [];
+let numberOfFilms;
 
-  answers[0] = prompt("Что вы тут делаете, я Вас не звал?");
-  answers[1] = prompt("А денег дадите?");
-  answers[2] = prompt("НУ я так не играю");
+  numberOfFilms = prompt("Сколько фильмов вы уде посмотрели?");
 
-  document.write(answers);
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: [],
+    actors: [],
+    genres: [],
+    privat: false
+};
+    let firstFilm = prompt("Один из просмотренных последних фильмов");
+    personalMovieDB.movies[firstFilm] = prompt("На сколько бы вы его оценили?");
+    let secondtFilm = prompt("Один из просмотренных последних фильмов");
+    personalMovieDB.movies[secondtFilm] = prompt("На сколько бы вы его оценили?");
+ 
+console.log(personalMovieDB);
