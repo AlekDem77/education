@@ -1,24 +1,13 @@
 "use strict";
 
-let numberOfFilms;
-
-    start();
-
 const personalMovieDB = {
-    count: numberOfFilms,
+    count: 0,
     movies: {},
     actors: {},
     genres: [],
-    privat: false
-};
+    privat: false,
 
-    rememberMyFilms();
-    detectPersonalLevel();
-    showMyDB();
-    writeYouGenres();
- 
-
-    function rememberMyFilms(){
+    rememberMyFilms:  function rememberMyFilms(){
         for (let i=0; i<2; i++){
 
             let film = prompt("Один из просмотренных последних фильмов");
@@ -30,9 +19,9 @@ const personalMovieDB = {
                 personalMovieDB.movies[film] = reit;
             }
         }
-    }
+    },
 
-    function detectPersonalLevel(){
+    detectPersonalLevel: function detectPersonalLevel(){
         if (personalMovieDB.count < 10){
             alert("Просмотрено довольно мало фильмов");
         } else if (personalMovieDB.count >=10 && personalMovieDB.count < 30){
@@ -40,23 +29,27 @@ const personalMovieDB = {
         } else if (personalMovieDB.count >= 30){
             alert("Вы киноман");
         }
-    }
+    },
 
-    function start() {
-        numberOfFilms = +prompt("Сколько фильмов вы уде посмотрели?");
+    start: function start() {
+        let numberOfFilms;
+        numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
+        personalMovieDB.count = numberOfFilms;
 
         while (numberOfFilms == "" || isNaN(numberOfFilms) || numberOfFilms == null ){
-            numberOfFilms = +prompt("Сколько фильмов вы уде посмотрели?");
+            numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
+            personalMovieDB.count = numberOfFilms;
         }
-    }
+    
+    },
 
-    function showMyDB(){
+    showMyDB: function showMyDB(){
         if (personalMovieDB.privat === false){
             console.log(personalMovieDB);
         }
-    }
+    },
 
-    function writeYouGenres(){
+    writeYouGenres: function writeYouGenres(){
         for (let i=0; i<3; i++){
             let genres = prompt("Ваш любимый жанр под номером "+(i+1));
             if(genres == null || genres == "" ){
@@ -64,7 +57,36 @@ const personalMovieDB = {
                 alert("Ну напиши, сложно что-ли");
             } else {
                 personalMovieDB.genres[i] = genres;
+                if (i==2) {
+                    personalMovieDB.genres.forEach(function(elem, index){
+                        console.log(`Свойство ${index} имеет значение ${elem}`);
+                    });
+                }
             }
         }
         
+    },
+
+    togglevisibleMyDB: function togglevisibleMyDB(){
+        if(personalMovieDB.privat == false){
+            personalMovieDB.privat = true;
+        } else {
+            personalMovieDB.privat = false;
+        }
     }
+
+
+
+};
+
+    personalMovieDB.start();
+    //personalMovieDB.rememberMyFilms();
+    //personalMovieDB.detectPersonalLevel();
+    //personalMovieDB.togglevisibleMyDB();
+    //personalMovieDB.showMyDB();
+    personalMovieDB.writeYouGenres();
+
+ 
+
+
+
